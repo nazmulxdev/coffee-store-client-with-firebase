@@ -1,4 +1,5 @@
 import React from "react";
+import { successMessage } from "../Utilities/sweetAlerts";
 
 const AddCoffee = () => {
   const handleAddCoffee = (e) => {
@@ -20,7 +21,7 @@ const AddCoffee = () => {
         if (data.insertedId) {
           console.log(data);
           form.reset();
-          alert("Coffee added successfully");
+          successMessage("Coffee added successfully");
         }
       });
 
@@ -92,6 +93,15 @@ const AddCoffee = () => {
                 className="input w-full"
                 name="details"
                 placeholder="Enter coffee details"
+              />
+            </fieldset>
+            <fieldset className="fieldset">
+              <label className="label">Price</label>
+              <input
+                type="text"
+                className="input w-full"
+                name="price"
+                placeholder="Enter coffee price"
               />
             </fieldset>
           </div>
