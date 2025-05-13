@@ -1,6 +1,6 @@
 import React from "react";
-import { useLoaderData, useNavigate, useParams } from "react-router";
-import { successMessage } from "../Utilities/sweetAlerts";
+import { Link, useLoaderData, useNavigate, useParams } from "react-router";
+import { errorMessage, successMessage } from "../Utilities/sweetAlerts";
 
 const UpdateCoffee = () => {
   const { id } = useParams();
@@ -28,6 +28,8 @@ const UpdateCoffee = () => {
           successMessage("Details updated successfully").then(() =>
             navigate("/")
           );
+        } else {
+          errorMessage("Please change at least one data");
         }
       });
   };
@@ -126,6 +128,14 @@ const UpdateCoffee = () => {
           />
         </fieldset>
       </form>
+      <div>
+        <p className="text-center m-4">
+          Don't want to update?{" "}
+          <Link className="text-blue-500 underline" to="/">
+            Go Back Home
+          </Link>
+        </p>
+      </div>
     </div>
   );
 };

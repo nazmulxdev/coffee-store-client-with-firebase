@@ -5,7 +5,7 @@ import { MdDelete } from "react-icons/md";
 import { Link } from "react-router";
 import Swal from "sweetalert2";
 
-const CoffeeCard = ({ coffee }) => {
+const CoffeeCard = ({ coffee, coffees, setCoffees }) => {
   const { _id, photoUrl, name, chef, price } = coffee;
   console.log(coffee);
   const handleDelete = (id) => {
@@ -26,6 +26,10 @@ const CoffeeCard = ({ coffee }) => {
           .then((res) => res.json())
           .then((data) => {
             if (data.deletedCount) {
+              const remainingCoffees = coffees.filter(
+                (coffee) => coffee._id !== id
+              );
+              setCoffees(remainingCoffees);
               Swal.fire({
                 title: "Deleted!",
                 text: "Your file has been deleted.",
