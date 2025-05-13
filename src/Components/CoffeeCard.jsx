@@ -2,6 +2,7 @@ import React from "react";
 import { FaEdit, FaEye, FaRecycle } from "react-icons/fa";
 import { FaDeleteLeft } from "react-icons/fa6";
 import { MdDelete } from "react-icons/md";
+import { Link } from "react-router";
 import Swal from "sweetalert2";
 
 const CoffeeCard = ({ coffee }) => {
@@ -54,12 +55,17 @@ const CoffeeCard = ({ coffee }) => {
         </div>
       </div>
       <div className="grid grid-cols-1 gap-1">
-        <button className="btn">
-          <FaEye></FaEye>
-        </button>
-        <button className="btn">
-          <FaEdit></FaEdit>
-        </button>
+        <Link to={`/coffees/${_id}`}>
+          <button className="btn">
+            <FaEye></FaEye>
+          </button>
+        </Link>
+        <Link to={`/updateCoffee/${_id}`}>
+          <button className="btn">
+            <FaEdit></FaEdit>
+          </button>
+        </Link>
+
         <button onClick={() => handleDelete(_id)} className="btn">
           <MdDelete></MdDelete>
         </button>
