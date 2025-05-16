@@ -3,7 +3,6 @@ import { Link, useLoaderData } from "react-router";
 
 const CoffeeDetails = () => {
   const coffee = useLoaderData();
-  console.log(coffee);
 
   return (
     <div className="max-w-4xl mx-auto p-6">

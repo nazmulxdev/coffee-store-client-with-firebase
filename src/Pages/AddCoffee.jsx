@@ -7,7 +7,6 @@ const AddCoffee = () => {
     const form = e.target;
     const formData = new FormData(form);
     const newCoffeeData = Object.fromEntries(formData.entries());
-    console.log(newCoffeeData);
 
     fetch("http://localhost:3000/coffees", {
       method: "POST",
@@ -19,7 +18,6 @@ const AddCoffee = () => {
       .then((res) => res.json())
       .then((data) => {
         if (data.insertedId) {
-          console.log(data);
           form.reset();
           successMessage("Coffee added successfully");
         }

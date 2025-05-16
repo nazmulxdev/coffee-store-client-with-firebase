@@ -7,13 +7,12 @@ const UpdateCoffee = () => {
   const navigate = useNavigate("/");
   const { name, chef, supplier, test, category, details, photoUrl, price } =
     useLoaderData();
-  console.log(id);
+
   const handleUpdateCoffee = (e) => {
     e.preventDefault();
     const form = e.target;
     const formData = new FormData(form);
     const updatedData = Object.fromEntries(formData.entries());
-    console.log(updatedData);
 
     fetch(`http://localhost:3000/coffees/${id}`, {
       method: "PUT",

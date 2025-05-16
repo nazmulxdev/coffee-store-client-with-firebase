@@ -14,16 +14,19 @@ const SignUp = () => {
     const formData = new FormData(form);
     const userInfo = Object.fromEntries(formData.entries());
     const { name, address, phoneNumber, photoUrl, email, password } = userInfo;
-    const userInformation = {
-      name,
-      address,
-      phoneNumber,
-      photoUrl,
-      email,
-    };
-    console.log(email, password, userInformation);
+
     createUser(email, password)
       .then((user) => {
+        const userInformation = {
+          name,
+          address,
+          phoneNumber,
+          photoUrl,
+          email,
+          uid: user.user.uid,
+          creationTime: user?.user?.metadata?.creationTime,
+          lastSignInTime: user?.user?.metadata?.lastSignInTime,
+        };
         updateProfile(auth.currentUser, {
           displayName: name,
           photoURL: photoUrl,
@@ -41,18 +44,14 @@ const SignUp = () => {
             .then((res) => res.json())
             .then((data) => {
               if (data.insertedId) {
+                form.reset();
                 successMessage("Your account is created Successfully");
               }
             });
         });
-        const loggedUser = user.user;
-        console.log(loggedUser);
       })
       .catch((error) => {
         const errorText = error.message;
-        const errorCode = error.code;
-        console.log(errorCode);
-        console.log(error);
         errorMessage(errorText);
       });
   };
