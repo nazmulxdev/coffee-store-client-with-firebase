@@ -34,7 +34,7 @@ const SignUp = () => {
           setCurrentUser(auth.currentUser);
           //   save profile in the data base
 
-          fetch("http://localhost:3000/users", {
+          fetch("https://coffee-store-server-bice-seven.vercel.app/users", {
             method: "POST",
             headers: {
               "content-type": "application/json",

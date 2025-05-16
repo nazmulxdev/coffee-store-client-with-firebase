@@ -18,7 +18,7 @@ const SignIn = () => {
         };
         // update lastSignInTime in data base
 
-        fetch("http://localhost:3000/users", {
+        fetch("https://coffee-store-server-bice-seven.vercel.app/users", {
           method: "PATCH",
           headers: {
             "content-type": "application/json",

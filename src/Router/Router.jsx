@@ -17,13 +17,15 @@ const Router = createBrowserRouter([
       {
         index: true,
         Component: Home,
-        loader: () => fetch("http://localhost:3000/coffees"),
+        loader: () =>
+          fetch("https://coffee-store-server-bice-seven.vercel.app/coffees"),
         hydrateFallbackElement: <p>data is loading</p>,
       },
       {
         path: "/users",
         Component: Users,
-        loader: () => fetch("http://localhost:3000/users"),
+        loader: () =>
+          fetch("https://coffee-store-server-bice-seven.vercel.app/users"),
         hydrateFallbackElement: <p>data is loading</p>,
       },
       {
@@ -34,13 +36,17 @@ const Router = createBrowserRouter([
         path: "/coffees/:id",
         Component: CoffeeDetails,
         loader: ({ params }) =>
-          fetch(`http://localhost:3000/coffees/${params.id}`),
+          fetch(
+            `https://coffee-store-server-bice-seven.vercel.app/coffees/${params.id}`
+          ),
       },
       {
         path: "/updateCoffee/:id",
         Component: UpdateCoffee,
         loader: ({ params }) =>
-          fetch(`http://localhost:3000/coffees/${params.id}`),
+          fetch(
+            `https://coffee-store-server-bice-seven.vercel.app/coffees/${params.id}`
+          ),
       },
     ],
   },
